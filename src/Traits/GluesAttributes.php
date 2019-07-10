@@ -4,7 +4,7 @@ namespace SoareCostin\BladeFormComponents\Traits;
 
 trait GluesAttributes
 {
-   public function glueAttributes($attributesList = null)
+    public function glueAttributes($attributesList = null)
     {
         if (is_null($attributesList) && isset($this->attributesList)) {
             $attributesList = $this->attributesList;
@@ -32,10 +32,11 @@ trait GluesAttributes
                     }
                     continue;
                 }
-                
+
                 $pairs[] = sprintf('%s="%s"', $attr, $this->{$attr});
             }
         }
-        return implode(" ", $pairs);
+
+        return implode(' ', $pairs);
     }
 }
