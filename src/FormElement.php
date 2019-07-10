@@ -194,8 +194,7 @@ abstract class FormElement
 
     protected function setClass()
     {
-        // Default class applied to all form elements (Eg 'form-control' for Bootstrap)
-        $this->class[] = config('blade-form-components.styles.field.input');
+        $this->setDefaultClass();
 
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
@@ -204,5 +203,14 @@ abstract class FormElement
         }
 
         // Attach other user-defined classes
+        if (isset($this->params['class'])) {
+            $this->class[] = $this->params['class'];
+        }
+    }
+
+    protected function setDefaultClass()
+    {
+        // Default class applied to all form elements (Eg 'form-control' for Bootstrap)
+        $this->class[] = config('blade-form-components.styles.field.input');
     }
 }

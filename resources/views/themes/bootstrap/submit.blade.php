@@ -1,3 +1,3 @@
-<button type="submit" class="btn btn-primary">
+<button type="submit" {!! $element->glueAttributes() !!}>
     {{ $element->label }}
 </button>

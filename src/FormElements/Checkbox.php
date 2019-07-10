@@ -38,12 +38,15 @@ class Checkbox extends FormElement
         $this->value = 1;
     }
 
-    protected function addClasses()
+    protected function setDefaultClass()
     {
         // Specific to Bootstrap, will need to abstract it
         $this->class[] = 'custom-control-input';
         $this->labelClass[] = 'custom-control-label';
+    }
 
+    protected function addClasses()
+    {
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if ($errors->has($this->name)) {
