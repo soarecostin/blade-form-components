@@ -14,7 +14,7 @@ class Textarea extends FormElement
 
     /** @var array */
     public $attributesList = [
-        'id', 'name', 'placeholder', 'rows', 'class', 'required', 'disabled', 'readonly', 'autocomplete'
+        'id', 'name', 'placeholder', 'rows', 'class', 'required', 'disabled', 'readonly', 'autocomplete',
     ];
 
     protected function setSpecificAttributes()
@@ -25,14 +25,14 @@ class Textarea extends FormElement
 
     protected function setPlaceholder()
     {
-        if (isset($this->params['placeholder']) && !empty($this->params['placeholder'])) {
+        if (isset($this->params['placeholder']) && ! empty($this->params['placeholder'])) {
             $this->placeholder = $this->params['placeholder'];
         }
     }
 
     protected function setRows()
     {
-        if (isset($this->params['rows']) && !empty($this->params['rows'])) {
+        if (isset($this->params['rows']) && ! empty($this->params['rows'])) {
             $this->rows = $this->params['rows'];
         }
     }

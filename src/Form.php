@@ -28,7 +28,7 @@ class Form
 
     /** @var Illuminate\Database\Eloquent\Model */
     public $model = null;
-    
+
     /** @var bool */
     public $autocomplete;
 
@@ -38,7 +38,7 @@ class Form
     ];
     
     /**
-     * Will be called when the form is opened
+     * Will be called when the form is opened.
      */
     public function setup(array $params)
     {
@@ -52,7 +52,7 @@ class Form
     }
 
     /**
-     * Will be called when the form is closed
+     * Will be called when the form is closed.
      */
     public function delete()
     {
@@ -65,25 +65,26 @@ class Form
 
     protected function setModel()
     {
-        if (isset($this->params['model']) && !empty($this->params['model'])) {
+        if (isset($this->params['model']) && ! empty($this->params['model'])) {
             $this->model = $this->params['model'];
         }
     }
 
     protected function setAction()
     {
-        if (isset($this->params['url']) && !empty($this->params['url'])) {
+        if (isset($this->params['url']) && ! empty($this->params['url'])) {
             $this->action = $this->params['url'];
         }
     }
-    
+
     protected function setMethod()
     {
         // Set default
         $this->method = $this->httpMethod = 'post';
 
         // Check method in params
-        if (isset($this->params['method']) && !empty($this->params['method'])) {
+
+        if (isset($this->params['method']) && ! empty($this->params['method'])) {
             $this->method = $this->httpMethod = $this->params['method'];
         }
 
@@ -91,7 +92,7 @@ class Form
             $this->method = $this->httpMethod = strtoupper($this->method);
 
             // If the form type is POST but we have sent an existing model make it a PUT request
-            if ($this->httpMethod == 'POST' && !is_null($this->model)) {
+            if ($this->httpMethod == 'POST' && ! is_null($this->model)) {
                 $this->httpMethod = 'PUT';
             }
 
@@ -101,15 +102,15 @@ class Form
             }
         }
     }
-    
+
     protected function setFiles()
     {
-        if (isset($this->params['files']) && !empty($this->params['files'])) {
+        if (isset($this->params['files']) && ! empty($this->params['files'])) {
             $this->files = $this->params['files'];
             $this->enctype = 'multipart/form-data';
         }
     }
-    
+
     protected function setAutocomplete()
     {
         // Set default autocomplete option (true/false) from cofing file

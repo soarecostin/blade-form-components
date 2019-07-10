@@ -3,7 +3,7 @@
 return [
 
     'theme' => 'bootstrap',
-    
+
     'autocomplete' => false,
 
     'styles' => [

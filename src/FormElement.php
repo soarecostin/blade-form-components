@@ -17,7 +17,7 @@ abstract class FormElement
 
     /** @var object */
     public $model = null;
-    
+
     /** @var string */
     public $id;
 
@@ -32,25 +32,28 @@ abstract class FormElement
 
     /** @var array */
     public $class = [];
-    
+
     /** @var array */
     public $labelClass = [];
 
     /** @var bool */
     public $required = false;
-    
+
     /** @var bool */
     public $disabled = false;
-    
+
     /** @var bool */
     public $readonly = false;
-    
+
     /** @var bool */
     public $autocomplete;
 
+    /** @var array */
+    public $attributesList = [];
+
     /** @var string */
     public $desc;
-    
+
     /** @var string */
     public $help;
 
@@ -68,15 +71,15 @@ abstract class FormElement
     {
         $this->form = app(Form::class);
     }
-    
+
     protected function setModel()
     {
-        if (isset($this->params['model']) && !empty($this->params['model'])) {
+        if (isset($this->params['model']) && ! empty($this->params['model'])) {
             $this->model = $this->params['model'];
         }
-        
+
         // Check to see if the model was added on the form opening tag
-        if (is_null($this->model) && !is_null($this->form->model)) {
+        if (is_null($this->model) && ! is_null($this->form->model)) {
             $this->model = $this->form->model;
         }
     }
@@ -102,7 +105,7 @@ abstract class FormElement
 
     protected function setName()
     {
-        if (isset($this->params['name']) && !empty($this->params['name'])) {
+        if (isset($this->params['name']) && ! empty($this->params['name'])) {
             $this->name = $this->id = $this->params['name'];
         }
     }
@@ -110,20 +113,22 @@ abstract class FormElement
     protected function setLabel()
     {
         // First, check if we receive an explicit label
-        if (isset($this->params['label']) && !empty($this->params['label'])) {
+        if (isset($this->params['label']) && ! empty($this->params['label'])) {
             $this->label = $this->params['label'];
+
             return;
         }
 
         // Check if we receive a label that is false, so we don't display it
         if (isset($this->params['label']) && $this->params['label'] === false) {
             $this->label = false;
+
             return;
         }
 
         // Fallback: construct the label from the name
         if (isset($this->name)) {
-            $this->label = ucwords(str_replace("_", " ", $this->name));
+            $this->label = ucwords(str_replace('_', ' ', $this->name));
         }
     }
 
@@ -151,15 +156,15 @@ abstract class FormElement
     protected function setValue()
     {
         if (is_null($this->name)) {
-            return null;
+            return;
         }
 
-        if (!is_null($this->value)) {
+        if (! is_null($this->value)) {
             $computedValue = $this->value;
-        } else if (!is_null($this->model) && isset($this->model->{str_replace('[]','',$this->name)})) {
-            $computedValue = $this->model->{str_replace('[]','',$this->name)};
+        } elseif (! is_null($this->model) && isset($this->model->{str_replace('[]', '', $this->name)})) {
+            $computedValue = $this->model->{str_replace('[]', '', $this->name)};
         }
-        
+
         $this->value = old($this->name, $computedValue ?? '');
     }
 
@@ -172,14 +177,14 @@ abstract class FormElement
             $this->autocomplete = $this->params['autocomplete'];
         }
     }
-    
+
     protected function setDesc()
     {
         if (isset($this->params['desc'])) {
             $this->desc = $this->params['desc'];
         }
     }
-    
+
     protected function setHelp()
     {
         if (isset($this->params['help'])) {
@@ -191,7 +196,7 @@ abstract class FormElement
     {
         // Default class applied to all form elements (Eg 'form-control' for Bootstrap)
         $this->class[] = config('blade-form-components.styles.field.input');
-        
+
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if ($errors->has($this->name)) {
@@ -199,6 +204,5 @@ abstract class FormElement
         }
 
         // Attach other user-defined classes
-
     }
 }

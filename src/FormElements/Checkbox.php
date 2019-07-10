@@ -15,7 +15,7 @@ class Checkbox extends FormElement
 
     /** @var array */
     public $attributesList = [
-        'id', 'name', 'type', 'value', 'class', 'checked', 'required', 'disabled', 'readonly', 'autocomplete'
+        'id', 'name', 'type', 'value', 'class', 'checked', 'required', 'disabled', 'readonly', 'autocomplete',
     ];
 
     protected function setSpecificAttributes()
@@ -49,6 +49,5 @@ class Checkbox extends FormElement
         if ($errors->has($this->name)) {
             $this->labelClass[] = config('blade-form-components.styles.field.error');
         }
-
     }
 }
