@@ -56,7 +56,7 @@ abstract class FormElement
 
     /** @var string */
     public $help;
-    
+
     /** @var array */
     public $customAttributes;
 
@@ -222,7 +222,7 @@ abstract class FormElement
 
     protected function setCustomAttributes()
     {
-        if (isset($this->params['attributes']['input']) && !empty($this->params['attributes']['input'])) {
+        if (isset($this->params['attributes']['input']) && ! empty($this->params['attributes']['input'])) {
             $this->customAttributes = $this->params['attributes']['input'];
         }
     }
