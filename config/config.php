@@ -1,8 +1,16 @@
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
+
+    'theme' => 'bootstrap',
+    
+    'autocomplete' => false,
+
+    'styles' => [
+        'field' => [
+            'input' => 'form-control',
+            'error' => 'is-invalid',
+        ],
+    ],
 
 ];

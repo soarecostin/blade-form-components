@@ -1,6 +1,6 @@
 <?php
 
-namespace Soarecostin\BladeFormComponents\Tests;
+namespace SoareCostin\BladeFormComponents\Tests;
 
 use PHPUnit\Framework\TestCase;
 
