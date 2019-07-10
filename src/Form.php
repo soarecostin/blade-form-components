@@ -19,7 +19,7 @@ class Form
 
     /** @var string */
     public $httpMethod;
-    
+
     /** @var bool */
     public $files;
 
@@ -34,9 +34,9 @@ class Form
 
     /** @var array */
     public $attributesList = [
-        'action', 'method', 'enctype', 'autocomplete'
+        'action', 'method', 'enctype', 'autocomplete',
     ];
-    
+
     /**
      * Will be called when the form is opened.
      */
