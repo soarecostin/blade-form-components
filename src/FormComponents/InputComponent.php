@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace SoareCostin\BladeFormComponents\FormComponents;
 
