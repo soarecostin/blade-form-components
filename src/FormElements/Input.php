@@ -20,12 +20,20 @@ class Input extends FormElement
     protected function setSpecificAttributes()
     {
         $this->setPlaceholder();
+        $this->setType();
     }
 
     protected function setPlaceholder()
     {
         if (isset($this->params['placeholder']) && ! empty($this->params['placeholder'])) {
             $this->placeholder = $this->params['placeholder'];
+        }
+    }
+
+    protected function setType()
+    {
+        if (isset($this->params['type']) && ! empty($this->params['type'])) {
+            $this->type = $this->params['type'];
         }
     }
 }
