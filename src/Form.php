@@ -2,8 +2,12 @@
 
 namespace SoareCostin\BladeFormComponents;
 
+use SoareCostin\BladeFormComponents\Traits\GluesAttributes;
+
 class Form
 {
+    use GluesAttributes;
+
     /** @var array */
     protected $params;
 
@@ -12,15 +16,26 @@ class Form
 
     /** @var string */
     public $method;
+
+    /** @var string */
+    public $httpMethod;
     
     /** @var bool */
     public $files;
+
+    /** @var string */
+    public $enctype;
 
     /** @var Illuminate\Database\Eloquent\Model */
     public $model = null;
     
     /** @var bool */
     public $autocomplete;
+
+    /** @var array */
+    public $attributesList = [
+        'action', 'method', 'enctype', 'autocomplete'
+    ];
     
     /**
      * Will be called when the form is opened
@@ -65,19 +80,24 @@ class Form
     protected function setMethod()
     {
         // Set default
-        $this->method = 'post';
+        $this->method = $this->httpMethod = 'post';
 
         // Check method in params
         if (isset($this->params['method']) && !empty($this->params['method'])) {
-            $this->method = $this->params['method'];
+            $this->method = $this->httpMethod = $this->params['method'];
         }
 
         if (in_array(strtoupper($this->method), ['GET', 'POST', 'PUT', 'DELETE'])) {
-            $this->method = strtoupper($this->method);
+            $this->method = $this->httpMethod = strtoupper($this->method);
 
             // If the form type is POST but we have sent an existing model make it a PUT request
-            if ($this->method == 'POST' && !is_null($this->model)) {
-                $this->method = 'PUT';
+            if ($this->httpMethod == 'POST' && !is_null($this->model)) {
+                $this->httpMethod = 'PUT';
+            }
+
+            // The 'method' attribute is used to be used on the <form> element and can only by GET or POST
+            if ($this->method !== 'GET') {
+                $this->method = 'POST';
             }
         }
     }
@@ -86,6 +106,7 @@ class Form
     {
         if (isset($this->params['files']) && !empty($this->params['files'])) {
             $this->files = $this->params['files'];
+            $this->enctype = 'multipart/form-data';
         }
     }
     

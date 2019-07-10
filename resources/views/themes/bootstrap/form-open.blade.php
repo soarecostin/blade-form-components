@@ -1,8 +1,8 @@
-<form method="{{ $form->method == 'GET' ? 'GET' : 'POST' }}" action="{{ $form->action }}" autocomplete="{{ $form->autocomplete ? 'on' : 'off' }}">
-    @if ($form->method != 'GET')
+<form {!! $form->glueAttributes() !!}>
+    @if ($form->httpMethod != 'GET')
         @csrf
     @endif
 
-    @if ($form->method != 'GET' && $form->method !='POST')
-        @method($form->method)
+    @if ($form->httpMethod != 'GET' && $form->httpMethod != 'POST')
+        @method($form->httpMethod)
     @endif
