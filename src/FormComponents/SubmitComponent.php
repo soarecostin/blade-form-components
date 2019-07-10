@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 namespace SoareCostin\BladeFormComponents\FormComponents;
 
-use SoareCostin\BladeFormComponents\FormElements\Submit;
 use Illuminate\Contracts\Support\Htmlable;
+use SoareCostin\BladeFormComponents\FormElements\Submit;
 
 class SubmitComponent implements Htmlable
 {

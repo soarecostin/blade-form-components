@@ -11,16 +11,16 @@ class Select extends FormElement
 
     /** @var bool */
     public $multiple = false;
-    
+
     /** @var string */
     public $nulloption;
-    
+
     /** @var array */
     public $selected = [];
 
     /** @var array */
     public $attributesList = [
-        'id', 'name', 'class', 'multiple', 'required', 'disabled', 'readonly', 'autocomplete'
+        'id', 'name', 'class', 'multiple', 'required', 'disabled', 'readonly', 'autocomplete',
     ];
 
     protected function setSpecificAttributes()
@@ -30,7 +30,7 @@ class Select extends FormElement
 
     protected function setOptions()
     {
-        if (isset($this->params['options']) && !empty($this->params['options'])) {
+        if (isset($this->params['options']) && ! empty($this->params['options'])) {
             $this->options = $this->params['options'];
 
             foreach ($this->options as $value => $label) {

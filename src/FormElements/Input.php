@@ -14,7 +14,7 @@ class Input extends FormElement
 
     /** @var array */
     public $attributesList = [
-        'id', 'name', 'type', 'placeholder', 'value', 'class', 'required', 'disabled', 'readonly', 'autocomplete'
+        'id', 'name', 'type', 'placeholder', 'value', 'class', 'required', 'disabled', 'readonly', 'autocomplete',
     ];
 
     protected function setSpecificAttributes()
@@ -24,7 +24,7 @@ class Input extends FormElement
 
     protected function setPlaceholder()
     {
-        if (isset($this->params['placeholder']) && !empty($this->params['placeholder'])) {
+        if (isset($this->params['placeholder']) && ! empty($this->params['placeholder'])) {
             $this->placeholder = $this->params['placeholder'];
         }
     }
