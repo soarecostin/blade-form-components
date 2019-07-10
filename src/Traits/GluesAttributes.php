@@ -37,6 +37,12 @@ trait GluesAttributes
             }
         }
 
+        if (isset($this->customAttributes)) {
+            foreach ($this->customAttributes as $attrName => $attrVal) {
+                $pairs[] = sprintf('%s="%s"', $attrName, $attrVal);
+            }
+        }
+
         return implode(' ', $pairs);
     }
 }
