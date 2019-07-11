@@ -1,11 +1,13 @@
-# Very short description of the package
+# A collection of Blade Components for quick & easy forms in Bootstrap and Bulma
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/soarecostin/blade-form-components.svg?style=flat-square)](https://packagist.org/packages/soarecostin/blade-form-components)
-[![Build Status](https://img.shields.io/travis/soarecostin/blade-form-components/master.svg?style=flat-square)](https://travis-ci.org/soarecostin/blade-form-components)
-[![Quality Score](https://img.shields.io/scrutinizer/g/soarecostin/blade-form-components.svg?style=flat-square)](https://scrutinizer-ci.com/g/soarecostin/blade-form-components)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://travis-ci.org/soarecostin/blade-form-components.svg?branch=master)](https://travis-ci.org/soarecostin/blade-form-components)
+[![StyleCI](https://github.styleci.io/repos/195053164/shield?branch=master)](https://github.styleci.io/repos/195053164)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/soarecostin/blade-form-components/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/soarecostin/blade-form-components/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/soarecostin/blade-form-components/badges/build.png?b=master)](https://scrutinizer-ci.com/g/soarecostin/blade-form-components/build-status/master)
 [![Total Downloads](https://img.shields.io/packagist/dt/soarecostin/blade-form-components.svg?style=flat-square)](https://packagist.org/packages/soarecostin/blade-form-components)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This package allows to you build forms in blade in a clean and easy way. It provides a `@form` directive that you can use in Blade in order to render forms. The forms can be rendered in *Bootstrap* or *Bulma*.
 
 ## Installation
 
