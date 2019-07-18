@@ -8,7 +8,7 @@ class Form
 {
     use GluesAttributes;
 
-    /** @var array */
+    /** @var \Illuminate\Support\Collection */
     protected $params;
 
     /** @var string */
@@ -42,7 +42,7 @@ class Form
      */
     public function setup(array $params)
     {
-        $this->params = $params;
+        $this->params = collect($params);
 
         $this->setModel();
         $this->setAction();
@@ -65,28 +65,17 @@ class Form
 
     protected function setModel()
     {
-        if (isset($this->params['model']) && ! empty($this->params['model'])) {
-            $this->model = $this->params['model'];
-        }
+        $this->model = $this->params->get('model');
     }
 
     protected function setAction()
     {
-        if (isset($this->params['url']) && ! empty($this->params['url'])) {
-            $this->action = $this->params['url'];
-        }
+        $this->action = $this->params->get('url');
     }
 
     protected function setMethod()
     {
-        // Set default
-        $this->method = $this->httpMethod = 'post';
-
-        // Check method in params
-
-        if (isset($this->params['method']) && ! empty($this->params['method'])) {
-            $this->method = $this->httpMethod = $this->params['method'];
-        }
+        $this->method = $this->httpMethod = $this->params->get('method', 'post');
 
         if (in_array(strtoupper($this->method), ['GET', 'POST', 'PUT', 'DELETE'])) {
             $this->method = $this->httpMethod = strtoupper($this->method);
@@ -105,19 +94,14 @@ class Form
 
     protected function setFiles()
     {
-        if (isset($this->params['files']) && ! empty($this->params['files'])) {
-            $this->files = $this->params['files'];
-            $this->enctype = 'multipart/form-data';
-        }
+        $this->files = $this->params->get('files', 'false');
+        $this->enctype = $this->files ? 'multipart/form-data' : '';
     }
 
     protected function setAutocomplete()
     {
         // Set default autocomplete option (on/off) from cofing file
-        $this->autocomplete = config('blade-form-components.autocomplete');
-
-        if (isset($this->params['autocomplete'])) {
-            $this->autocomplete = $this->params['autocomplete'];
+        $this->autocomplete = $this->params->get('autocomplete', config('blade-form-components.autocomplete'));
         }
     }
 }

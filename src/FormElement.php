@@ -9,7 +9,7 @@ abstract class FormElement
 {
     use GluesAttributes;
 
-    /** @var array */
+    /** @var \Illuminate\Support\Collection */
     protected $params;
 
     /** @var Form */
@@ -56,7 +56,7 @@ abstract class FormElement
 
     public function __construct(array $params)
     {
-        $this->params = $params;
+        $this->params = collect($params);
 
         $this->setForm();
         $this->setModel();
@@ -71,14 +71,7 @@ abstract class FormElement
 
     protected function setModel()
     {
-        if (isset($this->params['model']) && ! empty($this->params['model'])) {
-            $this->model = $this->params['model'];
-        }
-
-        // Check to see if the model was added on the form opening tag
-        if (is_null($this->model) && ! is_null($this->form->model)) {
-            $this->model = $this->form->model;
-        }
+        $this->model = $this->params->get('model', $this->form->model);
     }
 
     protected function setCommonAttributes()
@@ -102,52 +95,38 @@ abstract class FormElement
 
     protected function setName()
     {
-        if (isset($this->params['name']) && ! empty($this->params['name'])) {
-            $this->name = $this->id = $this->params['name'];
-        }
+        $this->name = $this->id = $this->params->get('name');
     }
 
     protected function setLabel()
     {
-        // First, check if we receive an explicit label
-        if (isset($this->params['label']) && ! empty($this->params['label'])) {
-            $this->label = $this->params['label'];
-
-            return;
-        }
-
         // Check if we receive a label that is false, so we don't display it
-        if (isset($this->params['label']) && $this->params['label'] === false) {
+        if ($this->params->get('label') === false) {
             $this->label = '';
 
             return;
-        }
+        } 
 
         // Fallback: construct the label from the name
-        if (! empty($this->name)) {
-            $this->label = ucwords(str_replace('_', ' ', $this->name));
-        }
+        $fallbackLabel = ! empty($this->name) ? ucwords(str_replace('_', ' ', $this->name)) : '';
+
+        // Check if we receive an explicit label
+        $this->label = $this->params->get('label', $fallbackLabel);
     }
 
     protected function setRequired()
     {
-        if (isset($this->params['required']) && $this->params['required'] == true) {
-            $this->required = true;
-        }
+        $this->required = $this->params->get('required', false);
     }
 
     protected function setDisabled()
     {
-        if (isset($this->params['disabled']) && $this->params['disabled'] == true) {
-            $this->disabled = true;
-        }
+        $this->disabled = $this->params->get('disabled', false);
     }
 
     protected function setReadonly()
     {
-        if (isset($this->params['readonly']) && $this->params['readonly'] == true) {
-            $this->readonly = true;
-        }
+        $this->readonly = $this->params->get('readonly', false);
     }
 
     protected function setValue()
@@ -168,25 +147,17 @@ abstract class FormElement
     protected function setAutocomplete()
     {
         // Set default autocomplete option (on/off) from cofing file
-        $this->autocomplete = config('blade-form-components.autocomplete');
-
-        if (isset($this->params['autocomplete'])) {
-            $this->autocomplete = $this->params['autocomplete'];
-        }
+        $this->autocomplete = $this->params->get('autocomplete', config('blade-form-components.autocomplete'));
     }
 
     protected function setDesc()
     {
-        if (isset($this->params['desc'])) {
-            $this->desc = $this->params['desc'];
-        }
+        $this->desc = $this->params->get('desc');
     }
 
     protected function setHelp()
     {
-        if (isset($this->params['help'])) {
-            $this->help = $this->params['help'];
-        }
+        $this->help = $this->params->get('help');
     }
 
     protected function setClass()
@@ -200,8 +171,8 @@ abstract class FormElement
         }
 
         // Attach other user-defined classes
-        if (isset($this->params['class'])) {
-            $this->class[] = $this->params['class'];
+        if ($this->params->has('class')) {
+            $this->class[] = $this->params->get('class');
         }
     }
 
@@ -214,11 +185,10 @@ abstract class FormElement
     protected function customAttributes()
     {
         // Additional, custom attributes set by the user (eg: data, v-model)
+        $customAttributes = $this->params->get('attributes', []);
 
-        if (isset($this->params['attributes']['input']) && ! empty($this->params['attributes']['input'])) {
-            return $this->params['attributes']['input'];
-        }
-
-        return [];
+        return isset($customAttributes['input'])
+                ? $customAttributes['input']
+                : [];
     }
 }
