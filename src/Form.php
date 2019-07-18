@@ -102,6 +102,5 @@ class Form
     {
         // Set default autocomplete option (on/off) from cofing file
         $this->autocomplete = $this->params->get('autocomplete', config('blade-form-components.autocomplete'));
-        }
     }
 }
