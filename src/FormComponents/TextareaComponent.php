@@ -7,7 +7,7 @@ use SoareCostin\BladeFormComponents\FormElements\Textarea;
 
 class TextareaComponent implements Htmlable
 {
-    /** @var SoareCostin\BladeFormComponents\FormElements\Textarea */
+    /** @var \SoareCostin\BladeFormComponents\FormElements\Textarea */
     protected $element;
 
     public function __construct(array $params = [])

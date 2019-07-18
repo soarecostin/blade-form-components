@@ -7,6 +7,9 @@ use SoareCostin\BladeFormComponents\FormElements\Submit;
 
 class SubmitComponent implements Htmlable
 {
+    /** @var \SoareCostin\BladeFormComponents\FormElements\Submit */
+    protected $element;
+
     public function __construct(array $params = [])
     {
         $this->element = new Submit($params);

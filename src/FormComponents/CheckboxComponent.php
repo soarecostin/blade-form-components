@@ -7,7 +7,7 @@ use SoareCostin\BladeFormComponents\FormElements\Checkbox;
 
 class CheckboxComponent implements Htmlable
 {
-    /** @var SoareCostin\BladeFormComponents\FormElements\Checkbox */
+    /** @var \SoareCostin\BladeFormComponents\FormElements\Checkbox */
     protected $element;
 
     public function __construct(array $params = [])

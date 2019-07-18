@@ -26,7 +26,7 @@ class Form
     /** @var string */
     public $enctype;
 
-    /** @var Illuminate\Database\Eloquent\Model */
+    /** @var \Illuminate\Database\Eloquent\Model */
     public $model = null;
 
     /** @var bool */
@@ -56,7 +56,7 @@ class Form
      */
     public function delete()
     {
-        $this->parmas = null;
+        $this->params = null;
         $this->model = null;
         $this->action = null;
         $this->method = null;

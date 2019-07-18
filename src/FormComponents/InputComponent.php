@@ -7,7 +7,7 @@ use SoareCostin\BladeFormComponents\FormElements\Input;
 
 class InputComponent implements Htmlable
 {
-    /** @var SoareCostin\BladeFormComponents\FormElements\Input */
+    /** @var \SoareCostin\BladeFormComponents\FormElements\Input */
     protected $element;
 
     public function __construct(array $params = [])

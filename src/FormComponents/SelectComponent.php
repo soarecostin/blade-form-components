@@ -7,6 +7,9 @@ use SoareCostin\BladeFormComponents\FormElements\Select;
 
 class SelectComponent implements Htmlable
 {
+    /** @var \SoareCostin\BladeFormComponents\FormElements\Select */
+    protected $element;
+
     public function __construct(array $params = [])
     {
         $this->element = new Select($params);
