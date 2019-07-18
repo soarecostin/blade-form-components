@@ -105,7 +105,7 @@ abstract class FormElement
             $this->label = '';
 
             return;
-        } 
+        }
 
         // Fallback: construct the label from the name
         $fallbackLabel = ! empty($this->name) ? ucwords(str_replace('_', ' ', $this->name)) : '';
