@@ -214,10 +214,11 @@ abstract class FormElement
     protected function customAttributes()
     {
         // Additional, custom attributes set by the user (eg: data, v-model)
-        
+
         if (isset($this->params['attributes']['input']) && ! empty($this->params['attributes']['input'])) {
             return $this->params['attributes']['input'];
         }
+
         return [];
     }
 }
