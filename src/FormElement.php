@@ -124,7 +124,7 @@ abstract class FormElement
         }
 
         // Fallback: construct the label from the name
-        if (!empty($this->name)) {
+        if (! empty($this->name)) {
             $this->label = ucwords(str_replace('_', ' ', $this->name));
         }
     }
@@ -195,7 +195,7 @@ abstract class FormElement
 
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
-        if (!empty($this->name) && $errors->has($this->name)) {
+        if (! empty($this->name) && $errors->has($this->name)) {
             $this->class[] = config('blade-form-components.styles.field.error');
         }
 
