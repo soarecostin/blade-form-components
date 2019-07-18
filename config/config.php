@@ -4,7 +4,7 @@ return [
 
     'theme' => 'bootstrap',
 
-    'autocomplete' => false,
+    'autocomplete' => 'off',
 
     'styles' => [
         'field' => [

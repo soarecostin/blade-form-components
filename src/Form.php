@@ -29,8 +29,8 @@ class Form
     /** @var \Illuminate\Database\Eloquent\Model */
     public $model = null;
 
-    /** @var bool */
-    public $autocomplete;
+    /** @var string */
+    public $autocomplete = 'off';
 
     protected function attributesList()
     {
@@ -113,7 +113,7 @@ class Form
 
     protected function setAutocomplete()
     {
-        // Set default autocomplete option (true/false) from cofing file
+        // Set default autocomplete option (on/off) from cofing file
         $this->autocomplete = config('blade-form-components.autocomplete');
 
         if (isset($this->params['autocomplete'])) {

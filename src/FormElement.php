@@ -45,8 +45,8 @@ abstract class FormElement
     /** @var bool */
     public $readonly = false;
 
-    /** @var bool */
-    public $autocomplete;
+    /** @var string */
+    public $autocomplete = 'off';
 
     /** @var string */
     public $desc;
@@ -167,7 +167,7 @@ abstract class FormElement
 
     protected function setAutocomplete()
     {
-        // Set default autocomplete option (true/false) from cofing file
+        // Set default autocomplete option (on/off) from cofing file
         $this->autocomplete = config('blade-form-components.autocomplete');
 
         if (isset($this->params['autocomplete'])) {

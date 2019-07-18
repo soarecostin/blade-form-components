@@ -10,42 +10,35 @@ trait GluesAttributes
             $attributesList = $this->attributesList();
         }
 
-        $pairs = [];
-        foreach ($attributesList as $attr) {
-            if (isset($this->{$attr})) {
-
-                // Edge cases
-                if ($attr == 'autocomplete') {
-                    $pairs[] = sprintf('%s="%s"', $attr, $this->{$attr} ? 'on' : 'off');
-                    continue;
-                }
-
-                if ($attr == 'class' && is_array($this->{$attr})) {
-                    $pairs[] = sprintf('%s="%s"', $attr, implode(' ', $this->{$attr}));
-                    continue;
-                }
-
-                // Required, disabled, readonly: true/false
-                if (is_bool($this->{$attr})) {
-                    if ($this->{$attr} == true) {
-                        $pairs[] = $attr;
-                    }
-                    continue;
-                }
-
-                $pairs[] = sprintf('%s="%s"', $attr, $this->{$attr});
+        $pairs = collect($attributesList)->filter(function ($attr, $key) {
+            return isset($this->{$attr});
+        })
+        ->filter(function ($attr, $key) {
+            return ! is_bool($this->{$attr}) || $this->{$attr} == true;
+        })
+        ->map(function ($attr, $key) {
+            if (is_array($this->{$attr})) {
+                return sprintf('%s="%s"', $attr, implode(' ', $this->{$attr}));
             }
-        }
 
+            if (is_bool($this->{$attr})) {
+                return $attr;
+            }
+
+            return sprintf('%s="%s"', $attr, $this->{$attr});
+        });
+        
         $customAttributes = $this->customAttributes();
 
         if (! empty($customAttributes)) {
-            foreach ($customAttributes as $attrName => $attrVal) {
-                $pairs[] = sprintf('%s="%s"', $attrName, $attrVal);
-            }
+            $pairs = $pairs->merge(
+                collect($customAttributes)->map(function ($attr, $key) {
+                    return sprintf('%s="%s"', $key, $attr);
+                })
+            );
         }
 
-        return implode(' ', $pairs);
+        return $pairs->implode(' ');
     }
 
     protected function attributesList()
