@@ -22,7 +22,7 @@ abstract class FormElement
     public $id;
 
     /** @var string */
-    public $name;
+    public $name = '';
 
     /** @var mixed */
     public $value;
@@ -124,7 +124,7 @@ abstract class FormElement
         }
 
         // Fallback: construct the label from the name
-        if (isset($this->name)) {
+        if (!empty($this->name)) {
             $this->label = ucwords(str_replace('_', ' ', $this->name));
         }
     }
@@ -152,7 +152,7 @@ abstract class FormElement
 
     protected function setValue()
     {
-        if (is_null($this->name)) {
+        if (empty($this->name)) {
             return;
         }
 
@@ -195,7 +195,7 @@ abstract class FormElement
 
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
-        if ($errors->has($this->name)) {
+        if (!empty($this->name) && $errors->has($this->name)) {
             $this->class[] = config('blade-form-components.styles.field.error');
         }
 
