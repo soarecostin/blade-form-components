@@ -17,7 +17,7 @@ class Submit extends FormElement
     {
         parent::setLabel();
 
-        if (is_null($this->label)) {
+        if (empty($this->label)) {
             $this->label = is_null($this->model) ? 'Create' : 'Edit';
         }
     }

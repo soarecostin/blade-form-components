@@ -18,7 +18,6 @@ class SubmitComponent implements Htmlable
     public function toHtml()
     {
         $theme = config('blade-form-components.theme');
-        $fallbackLabel = is_null($this->element->model) ? 'Create' : 'Edit';
 
         return view(
             'blade-form-components::themes.'.$theme.'.submit', ['element' => $this->element]

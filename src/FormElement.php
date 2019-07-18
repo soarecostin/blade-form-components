@@ -28,7 +28,7 @@ abstract class FormElement
     public $value;
 
     /** @var string */
-    public $label;
+    public $label = '';
 
     /** @var array */
     public $class = [];
@@ -118,7 +118,7 @@ abstract class FormElement
 
         // Check if we receive a label that is false, so we don't display it
         if (isset($this->params['label']) && $this->params['label'] === false) {
-            $this->label = false;
+            $this->label = '';
 
             return;
         }
