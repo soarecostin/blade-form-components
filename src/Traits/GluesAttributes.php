@@ -27,7 +27,7 @@ trait GluesAttributes
 
             return sprintf('%s="%s"', $attr, $this->{$attr});
         });
-        
+
         $customAttributes = $this->customAttributes();
 
         if (! empty($customAttributes)) {
