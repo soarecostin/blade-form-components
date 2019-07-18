@@ -38,8 +38,8 @@ trait GluesAttributes
         }
 
         $customAttributes = $this->customAttributes();
-        
-        if (!empty($customAttributes)) {
+
+        if (! empty($customAttributes)) {
             foreach ($customAttributes as $attrName => $attrVal) {
                 $pairs[] = sprintf('%s="%s"', $attrName, $attrVal);
             }
@@ -47,12 +47,12 @@ trait GluesAttributes
 
         return implode(' ', $pairs);
     }
-    
+
     protected function attributesList()
     {
         return [];
     }
-    
+
     protected function customAttributes()
     {
         return [];
