@@ -19,9 +19,15 @@ composer require soarecostin/blade-form-components
 
 ## Usage
 
-``` php
-// Usage description here
+
+### Customization
+You can publish the configuration file, that contains all the available checks using:
+```php
+php artisan vendor:publish --provider=SoareCostin\BladeFormComponents\BladeFormComponentsServiceProvider
 ```
+
+This will publish a `blade-form-components.php` file in your config folder.
+
 
 ### Testing
 
