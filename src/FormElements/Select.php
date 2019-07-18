@@ -18,10 +18,12 @@ class Select extends FormElement
     /** @var array */
     public $selected = [];
 
-    /** @var array */
-    public $attributesList = [
-        'id', 'name', 'class', 'multiple', 'required', 'disabled', 'readonly', 'autocomplete',
-    ];
+    protected function attributesList()
+    {
+        return [
+            'id', 'name', 'class', 'multiple', 'required', 'disabled', 'readonly', 'autocomplete',
+        ];
+    }
 
     protected function setSpecificAttributes()
     {

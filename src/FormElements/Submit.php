@@ -6,10 +6,12 @@ use SoareCostin\BladeFormComponents\FormElement;
 
 class Submit extends FormElement
 {
-    /** @var array */
-    public $attributesList = [
-        'class', 'disabled',
-    ];
+    protected function attributesList()
+    {
+        return [
+            'class', 'disabled',
+        ];
+    }
 
     protected function setLabel()
     {

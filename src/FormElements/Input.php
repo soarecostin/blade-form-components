@@ -12,10 +12,12 @@ class Input extends FormElement
     /** @var string */
     public $placeholder;
 
-    /** @var array */
-    public $attributesList = [
-        'id', 'name', 'type', 'placeholder', 'value', 'class', 'required', 'disabled', 'readonly', 'autocomplete',
-    ];
+    protected function attributesList()
+    {
+        return [
+            'id', 'name', 'type', 'placeholder', 'value', 'class', 'required', 'disabled', 'readonly', 'autocomplete',
+        ];
+    }
 
     protected function setSpecificAttributes()
     {

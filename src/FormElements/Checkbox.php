@@ -13,10 +13,12 @@ class Checkbox extends FormElement
     /** @var bool */
     public $checked = false;
 
-    /** @var array */
-    public $attributesList = [
-        'id', 'name', 'type', 'value', 'class', 'checked', 'required', 'disabled', 'readonly', 'autocomplete',
-    ];
+    protected function attributesList()
+    {
+        return [
+            'id', 'name', 'type', 'value', 'class', 'checked', 'required', 'disabled', 'readonly', 'autocomplete',
+        ];
+    }
 
     protected function setSpecificAttributes()
     {

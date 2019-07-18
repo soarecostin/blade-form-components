@@ -12,10 +12,12 @@ class Textarea extends FormElement
     /** @var int */
     public $rows = 5;
 
-    /** @var array */
-    public $attributesList = [
-        'id', 'name', 'placeholder', 'rows', 'class', 'required', 'disabled', 'readonly', 'autocomplete',
-    ];
+    protected function attributesList()
+    {
+        return [
+            'id', 'name', 'placeholder', 'rows', 'class', 'required', 'disabled', 'readonly', 'autocomplete',
+        ];
+    }
 
     protected function setSpecificAttributes()
     {

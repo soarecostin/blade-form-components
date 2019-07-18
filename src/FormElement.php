@@ -48,17 +48,11 @@ abstract class FormElement
     /** @var bool */
     public $autocomplete;
 
-    /** @var array */
-    public $attributesList = [];
-
     /** @var string */
     public $desc;
 
     /** @var string */
     public $help;
-
-    /** @var array */
-    public $customAttributes;
 
     public function __construct(array $params)
     {
@@ -99,9 +93,6 @@ abstract class FormElement
         $this->setAutocomplete();
         $this->setDesc();
         $this->setHelp();
-
-        // Additional, custom attributes set by the user (eg: data, v-model)
-        $this->setCustomAttributes();
     }
 
     protected function setSpecificAttributes()
@@ -220,10 +211,13 @@ abstract class FormElement
         $this->class[] = config('blade-form-components.styles.field.input');
     }
 
-    protected function setCustomAttributes()
+    protected function customAttributes()
     {
+        // Additional, custom attributes set by the user (eg: data, v-model)
+        
         if (isset($this->params['attributes']['input']) && ! empty($this->params['attributes']['input'])) {
-            $this->customAttributes = $this->params['attributes']['input'];
+            return $this->params['attributes']['input'];
         }
+        return [];
     }
 }

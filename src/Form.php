@@ -32,10 +32,10 @@ class Form
     /** @var bool */
     public $autocomplete;
 
-    /** @var array */
-    public $attributesList = [
-        'action', 'method', 'enctype', 'autocomplete',
-    ];
+    protected function attributesList()
+    {
+        return ['action', 'method', 'enctype', 'autocomplete'];
+    }
 
     /**
      * Will be called when the form is opened.

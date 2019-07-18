@@ -6,8 +6,8 @@ trait GluesAttributes
 {
     public function glueAttributes($attributesList = null)
     {
-        if (is_null($attributesList) && isset($this->attributesList)) {
-            $attributesList = $this->attributesList;
+        if (is_null($attributesList)) {
+            $attributesList = $this->attributesList();
         }
 
         $pairs = [];
@@ -37,12 +37,24 @@ trait GluesAttributes
             }
         }
 
-        if (isset($this->customAttributes)) {
-            foreach ($this->customAttributes as $attrName => $attrVal) {
+        $customAttributes = $this->customAttributes();
+        
+        if (!empty($customAttributes)) {
+            foreach ($customAttributes as $attrName => $attrVal) {
                 $pairs[] = sprintf('%s="%s"', $attrName, $attrVal);
             }
         }
 
         return implode(' ', $pairs);
+    }
+    
+    protected function attributesList()
+    {
+        return [];
+    }
+    
+    protected function customAttributes()
+    {
+        return [];
     }
 }
