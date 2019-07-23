@@ -139,6 +139,8 @@ abstract class FormElement
             return;
         }
 
+        $this->value = $this->params->get('value');
+
         if (! is_null($this->value)) {
             $computedValue = $this->value;
         } elseif (! is_null($this->model) && isset($this->model->{str_replace('[]', '', $this->name)})) {
