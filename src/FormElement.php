@@ -60,7 +60,7 @@ abstract class FormElement
     public function __construct(array $params)
     {
         $this->params = collect($params);
-        
+
         $this->setForm();
         $this->setModel();
         $this->setCommonAttributes();
@@ -202,7 +202,7 @@ abstract class FormElement
                 ? $customAttributes['input']
                 : [];
     }
-    
+
     public function getTheme()
     {
         return $this->form->theme;
