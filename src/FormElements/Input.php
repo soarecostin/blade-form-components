@@ -27,16 +27,12 @@ class Input extends FormElement
 
     protected function setPlaceholder()
     {
-        if (isset($this->params['placeholder']) && ! empty($this->params['placeholder'])) {
-            $this->placeholder = $this->params['placeholder'];
-        }
+        $this->placeholder = $this->params->get('placeholder');
     }
 
     protected function setType()
     {
-        if (isset($this->params['type']) && ! empty($this->params['type'])) {
-            $this->type = $this->params['type'];
-        }
+        $this->type = $this->params->get('type');
     }
 
     protected function setDefaultClass()
