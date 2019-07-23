@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     'bootstrap' => [
         'fields' => [
             'error' => 'is-invalid',
