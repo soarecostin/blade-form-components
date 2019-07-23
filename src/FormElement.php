@@ -96,7 +96,7 @@ abstract class FormElement
     {
         // ...
     }
-    
+
     protected function setDefaultClass()
     {
         // ...

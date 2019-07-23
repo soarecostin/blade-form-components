@@ -14,11 +14,11 @@ return [
                 'checkbox' => 'custom-control-input',
                 'textarea' => 'form-control',
                 'select' => 'form-control',
-                'submit' => 'btn btn-primary'
+                'submit' => 'btn btn-primary',
             ],
             'labels' => [
                 'checkbox' => 'custom-control-label',
-                'select' => ''
+                'select' => '',
             ],
         ],
         'bulma' => [
@@ -28,12 +28,12 @@ return [
                 'checkbox' => 'checkbox',
                 'textarea' => 'textarea',
                 'select' => 'select',
-                'submit' => 'button is-primary'
+                'submit' => 'button is-primary',
             ],
             'labels' => [
                 'checkbox' => 'checkbox',
-                'select' => 'select'
-            ]
-        ]
-    ]
+                'select' => 'select',
+            ],
+        ],
+    ],
 ];
