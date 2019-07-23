@@ -1,17 +1,25 @@
 <div class="form-group">
     @include ('blade-form-components::themes.bootstrap.partials.label')
 
-    @if (isset($inputGroup))<div class="input-group">@endif
+    @if (!is_null($element->addons))
+        <div class="input-group">
+    @endif
 
-        @if (isset($inputGroup['prepend']))<div class="input-group-prepend">{!! $inputGroup['prepend'] !!}</div>@endif
+    @if (isset($element->addons['prepend']))
+        <div class="input-group-prepend">{!! $element->addons['prepend'] !!}</div>
+    @endif
 
-        <input {!! $element->glueAttributes() !!}>
+    <input {!! $element->glueAttributes() !!}>
 
-        @if (isset($inputGroup['append']))<div class="input-group-append">{!! $inputGroup['append'] !!}</div>@endif
+    @if (isset($element->addons['append']))
+        <div class="input-group-append">{!! $element->addons['append'] !!}</div>
+    @endif
 
-        @include ('blade-form-components::themes.bootstrap.partials.errors')
+    @include ('blade-form-components::themes.bootstrap.partials.errors')
         
-    @if (isset($inputGroup))</div>@endif
+    @if (!is_null($element->addons))
+        </div>
+    @endif
 
     @include ('blade-form-components::themes.bootstrap.partials.help')
 </div>

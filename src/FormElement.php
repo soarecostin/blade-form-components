@@ -54,6 +54,9 @@ abstract class FormElement
     /** @var string */
     public $help;
 
+    /** @var array */
+    public $addons;
+
     public function __construct(array $params)
     {
         $this->params = collect($params);
@@ -86,6 +89,7 @@ abstract class FormElement
         $this->setAutocomplete();
         $this->setDesc();
         $this->setHelp();
+        $this->setAddons();
     }
 
     protected function setSpecificAttributes()
@@ -158,6 +162,11 @@ abstract class FormElement
     protected function setHelp()
     {
         $this->help = $this->params->get('help');
+    }
+
+    protected function setAddons()
+    {
+        $this->addons = $this->params->get('addons');
     }
 
     protected function setClass()
