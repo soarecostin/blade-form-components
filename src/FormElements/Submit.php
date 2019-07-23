@@ -24,6 +24,6 @@ class Submit extends FormElement
 
     protected function setDefaultClass()
     {
-        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.submit');
+        $this->class[] = config('bfc-themes.'.$this->getTheme().'.fields.submit');
     }
 }

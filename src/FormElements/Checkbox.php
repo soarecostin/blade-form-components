@@ -42,8 +42,8 @@ class Checkbox extends FormElement
 
     protected function setDefaultClass()
     {
-        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.checkbox');
-        $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.checkbox');
+        $this->class[] = config('bfc-themes.'.$this->getTheme().'.fields.checkbox');
+        $this->labelClass[] = config('bfc-themes.'.$this->getTheme().'.labels.checkbox');
     }
 
     protected function addClasses()
@@ -51,7 +51,7 @@ class Checkbox extends FormElement
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if ($errors->has($this->name)) {
-            $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.error');
+            $this->labelClass[] = config('bfc-themes.'.$this->getTheme().'.fields.error');
         }
     }
 }
