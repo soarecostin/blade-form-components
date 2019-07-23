@@ -17,10 +17,8 @@ class SubmitComponent implements Htmlable
 
     public function toHtml()
     {
-        $theme = config('blade-form-components.theme');
-
         return view(
-            'blade-form-components::themes.'.$theme.'.submit', ['element' => $this->element]
+            'blade-form-components::themes.'.$this->element->getTheme().'.submit', ['element' => $this->element]
         );
     }
 }

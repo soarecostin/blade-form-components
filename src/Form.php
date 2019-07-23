@@ -12,6 +12,9 @@ class Form
     protected $params;
 
     /** @var string */
+    public $theme;
+
+    /** @var string */
     public $action;
 
     /** @var string */
@@ -43,6 +46,7 @@ class Form
     public function setup(array $params)
     {
         $this->params = collect($params);
+        $this->theme = config('blade-form-components.theme');
 
         $this->setModel();
         $this->setAction();
