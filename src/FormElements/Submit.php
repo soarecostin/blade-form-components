@@ -24,7 +24,6 @@ class Submit extends FormElement
 
     protected function setDefaultClass()
     {
-        // Specific to Bootstrap, we need to add it to config
-        $this->class[] = 'btn btn-primary';
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.submit');
     }
 }

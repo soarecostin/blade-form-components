@@ -42,9 +42,8 @@ class Checkbox extends FormElement
 
     protected function setDefaultClass()
     {
-        // Specific to Bootstrap, will need to abstract it
-        $this->class[] = 'custom-control-input';
-        $this->labelClass[] = 'custom-control-label';
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.checkbox');
+        $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.checkbox');
     }
 
     protected function addClasses()
@@ -52,7 +51,7 @@ class Checkbox extends FormElement
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if ($errors->has($this->name)) {
-            $this->labelClass[] = config('blade-form-components.styles.field.error');
+            $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.error');
         }
     }
 }

@@ -48,4 +48,9 @@ class Select extends FormElement
             }
         }
     }
+    
+    protected function setDefaultClass()
+    {
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.select');
+    }
 }

@@ -38,4 +38,9 @@ class Input extends FormElement
             $this->type = $this->params['type'];
         }
     }
+
+    protected function setDefaultClass()
+    {
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.input');
+    }
 }

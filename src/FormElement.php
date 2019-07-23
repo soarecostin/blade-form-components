@@ -96,6 +96,11 @@ abstract class FormElement
     {
         // ...
     }
+    
+    protected function setDefaultClass()
+    {
+        // ...
+    }
 
     protected function setName()
     {
@@ -178,19 +183,13 @@ abstract class FormElement
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if (! empty($this->name) && $errors->has($this->name)) {
-            $this->class[] = config('blade-form-components.styles.field.error');
+            $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.error');
         }
 
         // Attach other user-defined classes
         if ($this->params->has('class')) {
             $this->class[] = $this->params->get('class');
         }
-    }
-
-    protected function setDefaultClass()
-    {
-        // Default class applied to all form elements (Eg 'form-control' for Bootstrap)
-        $this->class[] = config('blade-form-components.styles.field.input');
     }
 
     protected function customAttributes()
