@@ -37,7 +37,7 @@ class BladeFormComponentsServiceProvider extends ServiceProvider
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'blade-form-components');
         $this->mergeConfigFrom(__DIR__.'/../config/themes.php', 'bfc-themes');
-        
+
         $this->app->singleton(Form::class, function () {
             return new Form();
         });
