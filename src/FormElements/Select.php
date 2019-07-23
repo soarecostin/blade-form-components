@@ -28,6 +28,7 @@ class Select extends FormElement
     protected function setSpecificAttributes()
     {
         $this->setOptions();
+        $this->setNulloption();
     }
 
     protected function setOptions()
@@ -47,6 +48,11 @@ class Select extends FormElement
                 }
             }
         }
+    }
+
+    protected function setNulloption()
+    {
+        $this->nulloption = $this->params->get('nulloption');
     }
 
     protected function setDefaultClass()
