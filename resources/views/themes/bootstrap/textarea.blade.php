@@ -1,9 +1,9 @@
 <div class="form-group">
-    @include ('blade-form-components::themes.bootstrap.partials.label')
+    @yield ('label-'.$id)
+
+    @yield ('element-'.$id)
+
+    @yield ('help-'.$id)
     
-    <textarea {!! $element->glueAttributes() !!}>{{ $element->value }}</textarea>
-
-    @include ('blade-form-components::themes.bootstrap.partials.help')
-
-    @include ('blade-form-components::themes.bootstrap.partials.errors')
+    @yield ('errors-'.$id)
 </div>

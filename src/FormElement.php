@@ -67,6 +67,16 @@ abstract class FormElement
         $this->setSpecificAttributes();
     }
 
+    public function getId()
+    {
+        return md5(serialize($this));
+    }
+
+    public function getTheme()
+    {
+        return $this->form->theme;
+    }
+    
     protected function setForm()
     {
         $this->form = app(Form::class);
@@ -183,7 +193,7 @@ abstract class FormElement
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if (! empty($this->name) && $errors->has($this->name)) {
-            $this->class[] = config('bfc-themes.'.$this->getTheme().'.fields.error');
+            $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.error');
         }
 
         // Attach other user-defined classes
@@ -200,10 +210,5 @@ abstract class FormElement
         return isset($customAttributes['input'])
                 ? $customAttributes['input']
                 : [];
-    }
-
-    public function getTheme()
-    {
-        return $this->form->theme;
     }
 }

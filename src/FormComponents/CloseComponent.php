@@ -19,7 +19,7 @@ class CloseComponent implements Htmlable
     public function toHtml()
     {
         return view(
-            'blade-form-components::themes.'.$this->form->theme.'.form-close'
+            'blade-form-components::form-close'
         );
     }
 }

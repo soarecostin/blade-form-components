@@ -1,9 +1,7 @@
 <div class="field">
     @yield ('label-'.$id)
 
-    <div class="control">
-        @yield ('element-'.$id)
-    </div>
+    @yield ('element-'.$id)
 
     @yield ('help-'.$id)
     

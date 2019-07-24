@@ -1,5 +1,5 @@
 <div class="field">
-    @include ('blade-form-components::themes.bulma.partials.label')
+    @yield ('label-'.$id)
 
     <div class="control">
         
@@ -15,7 +15,7 @@
             <div class="control is-expanded">
         @endif
 
-        <input {!! $element->glueAttributes() !!}>
+        @yield ('element-'.$id)
         
         @if (!is_null($element->addons))
             </div>
@@ -29,9 +29,9 @@
             </div>
         @endif
         
-        @include ('blade-form-components::themes.bulma.partials.errors')
+        @yield ('errors-'.$id)
 
-        @include ('blade-form-components::themes.bulma.partials.help')
+        @yield ('help-'.$id)
 
     </div>
 </div>

@@ -18,7 +18,11 @@ class TextareaComponent implements Htmlable
     public function toHtml()
     {
         return view(
-            'blade-form-components::themes.'.$this->element->getTheme().'.textarea', ['element' => $this->element]
+            'blade-form-components::textarea', [
+                'element' => $this->element,
+                'theme' => $this->element->getTheme(),
+                'id' => $this->element->getId()
+            ]
         );
     }
 }

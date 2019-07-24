@@ -37,6 +37,7 @@ class Input extends FormElement
 
     protected function setDefaultClass()
     {
-        $this->class[] = config('bfc-themes.'.$this->getTheme().'.fields.input');
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.input');
+        $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.input');
     }
 }

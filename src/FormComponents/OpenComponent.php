@@ -19,7 +19,7 @@ class OpenComponent implements Htmlable
     public function toHtml()
     {
         return view(
-            'blade-form-components::themes.'.$this->form->theme.'.form-open', ['form' => $this->form]
+            'blade-form-components::form-open', ['form' => $this->form]
         );
     }
 }

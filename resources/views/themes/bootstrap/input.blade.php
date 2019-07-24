@@ -1,5 +1,5 @@
 <div class="form-group">
-    @include ('blade-form-components::themes.bootstrap.partials.label')
+    @yield ('label-'.$id)
 
     @if (!is_null($element->addons))
         <div class="input-group">
@@ -9,17 +9,17 @@
         <div class="input-group-prepend">{!! $element->addons['prepend'] !!}</div>
     @endif
 
-    <input {!! $element->glueAttributes() !!}>
+    @yield ('element-'.$id)
 
     @if (isset($element->addons['append']))
         <div class="input-group-append">{!! $element->addons['append'] !!}</div>
     @endif
 
-    @include ('blade-form-components::themes.bootstrap.partials.errors')
+    @yield ('errors-'.$id)
         
     @if (!is_null($element->addons))
         </div>
     @endif
 
-    @include ('blade-form-components::themes.bootstrap.partials.help')
+    @yield ('help-'.$id)
 </div>

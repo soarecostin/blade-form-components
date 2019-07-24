@@ -18,7 +18,11 @@ class InputComponent implements Htmlable
     public function toHtml()
     {
         return view(
-            'blade-form-components::themes.'.$this->element->getTheme().'.input', ['element' => $this->element]
+            'blade-form-components::input', [
+                'element' => $this->element,
+                'theme' => $this->element->getTheme(),
+                'id' => $this->element->getId()
+            ]
         );
     }
 }

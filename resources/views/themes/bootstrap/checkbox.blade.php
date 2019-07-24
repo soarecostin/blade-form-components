@@ -1,11 +1,11 @@
 <div class="form-group">
     <div class="custom-control custom-checkbox">
+        @yield ('element-'.$id)
+
+        @yield ('label-'.$id)
+
+        @yield ('errors-'.$id)
         
-        <input type="hidden" name="{{ $element->name }}" value="0">
-        <input {!! $element->glueAttributes() !!}>
-
-        @include ('blade-form-components::themes.bootstrap.partials.label')
-
-        @include ('blade-form-components::themes.bootstrap.partials.errors')
+        {{-- @yield ('help-'.$id) --}}
     </div>
 </div>

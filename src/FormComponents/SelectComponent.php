@@ -18,7 +18,11 @@ class SelectComponent implements Htmlable
     public function toHtml()
     {
         return view(
-            'blade-form-components::themes.'.$this->element->getTheme().'.select', ['element' => $this->element]
+            'blade-form-components::select', [
+                'element' => $this->element,
+                'theme' => $this->element->getTheme(),
+                'id' => $this->element->getId()
+            ]
         );
     }
 }

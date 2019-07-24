@@ -1,19 +1,9 @@
 <div class="form-group">
-    @include ('blade-form-components::themes.bootstrap.partials.label')
-
-    <select {!! $element->glueAttributes() !!}>
-        @if (isset($element->nulloption))
-            <option value>{{ $element->nulloption }}</option>
-        @endif
+    @yield ('label-'.$id)
     
-        @if (isset($element->options))
-            @foreach ($element->options as $optValue => $optLabel)
-                <option value="{{ $optValue }}" {{ in_array($optValue, $element->selected) ? 'selected' : '' }}>{{ $optLabel }}</option>
-            @endforeach
-        @endif
-    </select>
+    @yield ('element-'.$id)
 
-    @include ('blade-form-components::themes.bootstrap.partials.help')
+    @yield ('help-'.$id)
     
-    @include ('blade-form-components::themes.bootstrap.partials.errors')
+    @yield ('errors-'.$id)
 </div>

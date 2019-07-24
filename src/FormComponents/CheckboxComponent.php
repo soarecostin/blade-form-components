@@ -18,7 +18,11 @@ class CheckboxComponent implements Htmlable
     public function toHtml()
     {
         return view(
-            'blade-form-components::themes.'.$this->element->getTheme().'.checkbox', ['element' => $this->element]
+            'blade-form-components::checkbox', [
+                'element' => $this->element,
+                'theme' => $this->element->getTheme(),
+                'id' => $this->element->getId()
+            ]
         );
     }
 }
