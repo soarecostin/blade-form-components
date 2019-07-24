@@ -18,7 +18,7 @@ return [
             ],
             'labels' => [
                 'checkbox' => 'custom-control-label',
-                'input' => 'label'
+                'input' => 'label',
             ],
         ],
         'bulma' => [
@@ -32,7 +32,7 @@ return [
             ],
             'labels' => [
                 'checkbox' => 'checkbox',
-                'input' => 'label'
+                'input' => 'label',
             ],
         ],
         'tailwind' => [
@@ -46,8 +46,8 @@ return [
             ],
             'labels' => [
                 'checkbox' => 'checkbox',
-                'input' => 'block text-gray-700 text-sm font-bold mb-2'
+                'input' => 'block text-gray-700 text-sm font-bold mb-2',
             ],
-        ]
-    ]
+        ],
+    ],
 ];

@@ -19,7 +19,7 @@ class SubmitComponent implements Htmlable
     {
         return view(
             'blade-form-components::submit', [
-                'element' => $this->element
+                'element' => $this->element,
             ]
         );
     }

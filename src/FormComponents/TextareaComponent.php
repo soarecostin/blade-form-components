@@ -21,7 +21,7 @@ class TextareaComponent implements Htmlable
             'blade-form-components::textarea', [
                 'element' => $this->element,
                 'theme' => $this->element->getTheme(),
-                'id' => $this->element->getId()
+                'id' => $this->element->getId(),
             ]
         );
     }

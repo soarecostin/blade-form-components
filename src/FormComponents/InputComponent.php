@@ -21,7 +21,7 @@ class InputComponent implements Htmlable
             'blade-form-components::input', [
                 'element' => $this->element,
                 'theme' => $this->element->getTheme(),
-                'id' => $this->element->getId()
+                'id' => $this->element->getId(),
             ]
         );
     }
