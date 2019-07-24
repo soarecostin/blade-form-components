@@ -24,7 +24,6 @@ class Checkbox extends FormElement
     {
         $this->setChecked();
         $this->overwriteValue();
-        $this->addClasses();
     }
 
     protected function setChecked()
@@ -40,18 +39,15 @@ class Checkbox extends FormElement
         $this->value = 1;
     }
 
-    protected function setDefaultClass()
+    protected function setStyles()
     {
-        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.checkbox');
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.checkbox') ?? config('blade-form-components.themes.'.$this->getTheme().'.fields.default');
         $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.checkbox');
-    }
 
-    protected function addClasses()
-    {
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if ($errors->has($this->name)) {
-            $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.error');
+            $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.is-error');
         }
     }
 }

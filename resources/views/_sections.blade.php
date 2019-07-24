@@ -4,11 +4,11 @@
             {{ $element->label }}
             
             @if (isset($element->required) && $element->required)
-                <span class="font-weight-bold">*</span>
+                <span class="{{config('blade-form-components.themes.'.$theme.'.required')}}">*</span>
             @endif
             
             @if (isset($element->desc))
-                <small class="font-weight-light form-text text-muted">{!! $element->desc !!}</small>
+                <small class="{{config('blade-form-components.themes.'.$theme.'.desc')}}">{!! $element->desc !!}</small>
             @endif
         </label>
     @endif
@@ -16,14 +16,12 @@
 
 @section ('errors-'.$id)
     @if ($errors->has($element->name))
-        <span class="invalid-feedback">
-            <strong>{{ $errors->first($element->name) }}</strong>
-        </span>
+        <p class="{{config('blade-form-components.themes.'.$theme.'.error')}}">{{ $errors->first($element->name) }}</p>
     @endif
 @endsection
 
 @section ('help-'.$id)
     @if (isset($element->help))
-        <small class="form-text text-muted">{!! $element->help !!}</small>
+        <p class="{{config('blade-form-components.themes.'.$theme.'.help')}}">{!! $element->help !!}</p>
     @endif
 @endsection

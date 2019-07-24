@@ -35,9 +35,9 @@ class Input extends FormElement
         $this->type = $this->params->get('type');
     }
 
-    protected function setDefaultClass()
+    protected function setStyles()
     {
-        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.input');
-        $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.input');
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.input') ?? config('blade-form-components.themes.'.$this->getTheme().'.fields.default');
+        $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.default');
     }
 }

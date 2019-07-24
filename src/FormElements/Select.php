@@ -55,8 +55,9 @@ class Select extends FormElement
         $this->nulloption = $this->params->get('nulloption');
     }
 
-    protected function setDefaultClass()
+    protected function setStyles()
     {
-        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.select');
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.select') ?? config('blade-form-components.themes.'.$this->getTheme().'.fields.default');
+        $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.default');
     }
 }

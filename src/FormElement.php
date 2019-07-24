@@ -65,6 +65,7 @@ abstract class FormElement
         $this->setModel();
         $this->setCommonAttributes();
         $this->setSpecificAttributes();
+        $this->setStyles();
     }
 
     public function getId()
@@ -74,7 +75,7 @@ abstract class FormElement
 
     public function getTheme()
     {
-        return $this->form->theme;
+        return optional($this->form)->theme ?? config('blade-form-components.theme');
     }
 
     protected function setForm()
@@ -107,7 +108,7 @@ abstract class FormElement
         // ...
     }
 
-    protected function setDefaultClass()
+    protected function setStyles()
     {
         // ...
     }
@@ -188,12 +189,10 @@ abstract class FormElement
 
     protected function setClass()
     {
-        $this->setDefaultClass();
-
         // Attach the error class if an error is displayed against this field
         $errors = session()->get('errors', app(ViewErrorBag::class));
         if (! empty($this->name) && $errors->has($this->name)) {
-            $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.error');
+            $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.is-error');
         }
 
         // Attach other user-defined classes

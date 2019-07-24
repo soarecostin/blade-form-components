@@ -35,8 +35,9 @@ class Textarea extends FormElement
         $this->rows = $this->params->get('rows');
     }
 
-    protected function setDefaultClass()
+    protected function setStyles()
     {
-        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.textarea');
+        $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.textarea') ?? config('blade-form-components.themes.'.$this->getTheme().'.fields.default');
+        $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.default');
     }
 }

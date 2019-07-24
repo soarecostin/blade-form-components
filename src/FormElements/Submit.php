@@ -22,7 +22,7 @@ class Submit extends FormElement
         }
     }
 
-    protected function setDefaultClass()
+    protected function setStyles()
     {
         $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.submit');
     }

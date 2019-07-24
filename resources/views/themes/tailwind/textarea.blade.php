@@ -1,4 +1,4 @@
-<div class="field">
+<div class="mb-6">
     @yield ('label-'.$id)
 
     @yield ('element-'.$id)
