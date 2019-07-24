@@ -21,7 +21,7 @@ class SelectComponent implements Htmlable
             'blade-form-components::select', [
                 'element' => $this->element,
                 'theme' => $this->element->getTheme(),
-                'id' => $this->element->getId()
+                'id' => $this->element->getId(),
             ]
         );
     }

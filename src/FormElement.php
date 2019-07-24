@@ -76,7 +76,7 @@ abstract class FormElement
     {
         return $this->form->theme;
     }
-    
+
     protected function setForm()
     {
         $this->form = app(Form::class);
