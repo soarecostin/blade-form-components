@@ -26,7 +26,7 @@ class Form
 
     /** @var bool */
     public $files;
-    
+
     /** @var \Illuminate\Support\ViewErrorBag */
     public $errors;
 
@@ -106,7 +106,7 @@ class Form
         $this->files = $this->params->get('files', 'false');
         $this->enctype = $this->files ? 'multipart/form-data' : '';
     }
-    
+
     protected function setErrors()
     {
         $sessionErrors = session()->get('errors', app(ViewErrorBag::class));
