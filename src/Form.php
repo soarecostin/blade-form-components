@@ -2,6 +2,7 @@
 
 namespace SoareCostin\BladeFormComponents;
 
+use Illuminate\Support\ViewErrorBag;
 use SoareCostin\BladeFormComponents\Traits\GluesAttributes;
 
 class Form
@@ -25,6 +26,9 @@ class Form
 
     /** @var bool */
     public $files;
+    
+    /** @var \Illuminate\Support\ViewErrorBag */
+    public $errors;
 
     /** @var string */
     public $enctype;
@@ -52,6 +56,7 @@ class Form
         $this->setAction();
         $this->setMethod();
         $this->setFiles();
+        $this->setErrors();
         $this->setAutocomplete();
     }
 
@@ -100,6 +105,12 @@ class Form
     {
         $this->files = $this->params->get('files', 'false');
         $this->enctype = $this->files ? 'multipart/form-data' : '';
+    }
+    
+    protected function setErrors()
+    {
+        $sessionErrors = session()->get('errors', app(ViewErrorBag::class));
+        $this->errors = $this->params->get('errors', $sessionErrors);
     }
 
     protected function setAutocomplete()

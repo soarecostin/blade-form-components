@@ -2,7 +2,6 @@
 
 namespace SoareCostin\BladeFormComponents;
 
-use Illuminate\Support\ViewErrorBag;
 use SoareCostin\BladeFormComponents\Traits\GluesAttributes;
 
 abstract class FormElement
@@ -76,6 +75,11 @@ abstract class FormElement
     public function getTheme()
     {
         return optional($this->form)->theme ?? config('blade-form-components.theme');
+    }
+
+    public function getErrors()
+    {
+        return $this->form->errors->getBag('default');
     }
 
     protected function setForm()
@@ -190,8 +194,7 @@ abstract class FormElement
     protected function setClass()
     {
         // Attach the error class if an error is displayed against this field
-        $errors = session()->get('errors', app(ViewErrorBag::class));
-        if (! empty($this->name) && $errors->has($this->name)) {
+        if (! empty($this->name) && $this->form->errors->has($this->name)) {
             $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.is-error');
         }
 

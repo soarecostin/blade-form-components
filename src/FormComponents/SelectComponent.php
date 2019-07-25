@@ -23,6 +23,6 @@ class SelectComponent implements Htmlable
                 'theme' => $this->element->getTheme(),
                 'id' => $this->element->getId(),
             ]
-        );
+        )->withErrors($this->element->getErrors());
     }
 }

@@ -45,8 +45,7 @@ class Checkbox extends FormElement
         $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.labels.checkbox');
 
         // Attach the error class if an error is displayed against this field
-        $errors = session()->get('errors', app(ViewErrorBag::class));
-        if ($errors->has($this->name)) {
+        if ($this->form->errors->has($this->name)) {
             $this->labelClass[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.is-error');
         }
     }
