@@ -79,7 +79,7 @@ abstract class FormElement
 
     public function getErrors()
     {
-        return $this->form->errors->getBag('default');
+        return $this->form->errors;
     }
 
     protected function setForm()

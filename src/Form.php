@@ -110,7 +110,7 @@ class Form
     protected function setErrors()
     {
         $sessionErrors = session()->get('errors', app(ViewErrorBag::class));
-        $this->errors = $this->params->get('errors', $sessionErrors);
+        $this->errors = $this->params->get('errors', $sessionErrors->getBag('default'));
     }
 
     protected function setAutocomplete()
