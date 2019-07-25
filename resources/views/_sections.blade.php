@@ -8,7 +8,7 @@
             @endif
             
             @if (isset($element->desc))
-                <small class="{{config('blade-form-components.themes.'.$theme.'.desc')}}">{!! $element->desc !!}</small>
+                <p class="{{config('blade-form-components.themes.'.$theme.'.desc')}}">{!! $element->desc !!}</p>
             @endif
         </label>
     @endif

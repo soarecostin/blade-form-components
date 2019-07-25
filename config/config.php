@@ -20,7 +20,7 @@ return [
             ],
             'error' => 'invalid-feedback font-weight-bold mb-0',
             'help' => 'form-text text-muted small',
-            'desc' => 'font-weight-light form-text text-muted',
+            'desc' => 'font-weight-light form-text text-muted small mb-0',
             'required' => 'font-weight-bold',
         ],
         'bulma' => [
@@ -39,7 +39,7 @@ return [
             ],
             'error' => 'help is-danger',
             'help' => 'help',
-            'desc' => 'help',
+            'desc' => 'help has-text-weight-normal',
             'required' => '',
         ],
         'tailwind' => [
@@ -55,7 +55,7 @@ return [
             ],
             'error' => 'text-red-500 text-xs italic',
             'help' => 'text-gray-600 text-xs italic',
-            'desc' => 'text-gray-600 text-xs italic',
+            'desc' => 'text-gray-600 text-xs italic font-normal',
             'required' => '',
         ],
     ],
