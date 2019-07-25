@@ -18,7 +18,7 @@ return [
                 'default' => 'label',
                 'checkbox' => 'custom-control-label',
             ],
-            'error' => 'invalid-feedback font-weight-bold',
+            'error' => 'invalid-feedback font-weight-bold mb-0',
             'help' => 'form-text text-muted small',
             'desc' => 'font-weight-light form-text text-muted',
             'required' => 'font-weight-bold',

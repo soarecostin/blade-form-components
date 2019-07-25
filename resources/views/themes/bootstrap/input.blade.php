@@ -1,24 +1,13 @@
 <div class="form-group">
+
     @yield ('label-'.$id)
 
     @if (!is_null($element->addons))
-        <div class="input-group">
-    @endif
+        @include ('blade-form-components::themes.bootstrap.input-addons')
+    @else
+        @yield ('element-'.$id)
 
-    @if (isset($element->addons['prepend']))
-        <div class="input-group-prepend">{!! $element->addons['prepend'] !!}</div>
-    @endif
-
-    @yield ('element-'.$id)
-
-    @if (isset($element->addons['append']))
-        <div class="input-group-append">{!! $element->addons['append'] !!}</div>
-    @endif
-
-    @yield ('errors-'.$id)
-        
-    @if (!is_null($element->addons))
-        </div>
+        @yield ('errors-'.$id)
     @endif
 
     @yield ('help-'.$id)
