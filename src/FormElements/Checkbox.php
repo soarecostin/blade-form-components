@@ -2,7 +2,6 @@
 
 namespace SoareCostin\BladeFormComponents\FormElements;
 
-use Illuminate\Support\ViewErrorBag;
 use SoareCostin\BladeFormComponents\FormElement;
 
 class Checkbox extends FormElement
