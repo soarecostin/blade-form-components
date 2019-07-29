@@ -7,7 +7,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/soarecostin/blade-form-components/badges/build.png?b=master)](https://scrutinizer-ci.com/g/soarecostin/blade-form-components/build-status/master)
 [![Total Downloads](https://img.shields.io/packagist/dt/soarecostin/blade-form-components.svg?style=flat-square)](https://packagist.org/packages/soarecostin/blade-form-components)
 
-This package allows to you build forms in blade in a clean and easy way. It provides a `@form` directive that you can use in Blade in order to render forms. The forms can be rendered in *Bootstrap* or *Bulma*.
+This package allows to you build forms in blade in a clean and easy way. It provides a `@form` directive that you can use in Blade in order to render forms. The forms can be rendered in *Bootstrap*, *Bulma* or *Tailwind*.
 
 ## Installation
 
@@ -19,6 +19,44 @@ composer require soarecostin/blade-form-components
 
 ## Usage
 
+### Example
+A demo usage of this package can be seen at: [https://bfc-demo.dev.soa.re/](https://bfc-demo.dev.soa.re/)
+([github repo](https://github.com/soarecostin/blade-form-components-demo))
+
+The demo uses the following Blade template in order to render the form:
+```blade
+@form('open')
+
+    @form('input', ['name' => 'id', 'disabled' => true, 'value' => 1])
+    
+    @form('input', ['name' => 'name', 'required' => true, 'placeholder' => 'John Doe'])
+    
+    @form('password', ['name' => 'password', 'required' => true, 'help' => 'Minimum 6 characters'])
+    
+    @form('email', ['name' => 'email', 'required' => true, 'placeholder' => 'john.doe@gmail.com'])
+
+    @form('input', ['name' => 'price', 'class' => 'is-rounded is-expanded', 'required' => true,
+        'addons' => $priceAddons,
+    ])
+
+    @form('textarea', ['name' => 'message', 'rows' => 6, 'desc' => 'Let us know how we can help you below'])
+
+    @form('select', [
+        'name' => 'language',
+        'label' => 'Language',
+        'options' => [
+            'en' => 'English',
+            'fr' => 'French'
+        ],
+        'nulloption' => 'Please select',
+    ])
+
+    @form('checkbox', ['name' => 'terms', 'label' => 'I agree to the Terms and Conditions'])
+
+    @form('submit', ['name' => 'Submit', 'class' => 'is-warning'])
+
+@form('close')
+```
 
 ### Customization
 You can publish the configuration file, that contains all the available checks using:
@@ -28,12 +66,6 @@ php artisan vendor:publish --provider=SoareCostin\BladeFormComponents\BladeFormC
 
 This will publish a `blade-form-components.php` file in your config folder.
 
-
-### Testing
-
-``` bash
-composer test
-```
 
 ### Changelog
 
