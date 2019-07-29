@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2019-07-29
+### Added
+- Tailwind support
+- More configurable classes in config file
+
+### Fixed
+- Errors not being displayed
+- Desc not being properly displayed
+
+### Changed
+- Major refactor to the way templates are rendered and included for each framework
+
 ## [0.1.2] - 2019-07-23
 ### Added
 - Support for bulma markup
