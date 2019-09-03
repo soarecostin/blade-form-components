@@ -194,7 +194,7 @@ abstract class FormElement
     protected function setClass()
     {
         // Attach the error class if an error is displayed against this field
-        if (! empty($this->name) && $this->form->errors->has($this->name)) {
+        if (! empty($this->name) && optional($this->form->errors)->has($this->name)) {
             $this->class[] = config('blade-form-components.themes.'.$this->getTheme().'.fields.is-error');
         }
 
