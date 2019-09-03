@@ -1,12 +1,12 @@
 @section ('label-'.$id)
     @if ($element->label)
         <label for="{{ $element->name }}" class="{{ implode(" ", $element->labelClass) }}">
-            {{ $element->label }}
-            
+            {{ __($element->label) }}
+
             @if (isset($element->required) && $element->required)
                 <span class="{{config('blade-form-components.themes.'.$theme.'.required')}}">*</span>
             @endif
-            
+
             @if (isset($element->desc))
                 <p class="{{config('blade-form-components.themes.'.$theme.'.desc')}}">{!! $element->desc !!}</p>
             @endif
