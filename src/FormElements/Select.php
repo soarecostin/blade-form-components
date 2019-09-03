@@ -29,6 +29,7 @@ class Select extends FormElement
     {
         $this->setOptions();
         $this->setNulloption();
+        $this->setMultiple();
     }
 
     protected function setOptions()
@@ -53,6 +54,11 @@ class Select extends FormElement
     protected function setNulloption()
     {
         $this->nulloption = $this->params->get('nulloption');
+    }
+
+    protected function setMultiple()
+    {
+        $this->multiple = $this->params->get('multiple');
     }
 
     protected function setStyles()
