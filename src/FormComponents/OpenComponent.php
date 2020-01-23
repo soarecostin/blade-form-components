@@ -2,8 +2,8 @@
 
 namespace SoareCostin\BladeFormComponents\FormComponents;
 
-use SoareCostin\BladeFormComponents\Form;
 use Illuminate\Contracts\Support\Htmlable;
+use SoareCostin\BladeFormComponents\Form;
 
 class OpenComponent implements Htmlable
 {
