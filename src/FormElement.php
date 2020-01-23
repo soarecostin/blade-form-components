@@ -98,6 +98,7 @@ abstract class FormElement
         $this->setLabel();
         $this->setValue();
         $this->setClass();
+        $this->setLabelClass();
         $this->setRequired();
         $this->setDisabled();
         $this->setReadonly();
@@ -201,6 +202,14 @@ abstract class FormElement
         // Attach other user-defined classes
         if ($this->params->has('class')) {
             $this->class[] = $this->params->get('class');
+        }
+    }
+
+    protected function setLabelClass()
+    {
+        // Attach other user-defined classes
+        if ($this->params->has('labelClass')) {
+            $this->labelClass[] = $this->params->get('labelClass');
         }
     }
 
